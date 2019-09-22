@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<meta charset="utf-8">
+	  <title>ChannelX</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+      <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+      <link href="/static/css/freelancer.min.css" rel="stylesheet">
+
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+    <link href="/static/css/style.css" rel='stylesheet' type='text/css'>
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicon.png">
+    <title>User Panel</title>
+  </head>
+  <body id="page-top">
+
+<nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+         <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="/">ChannelX</a>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+               <ul class="navbar-nav ml-auto">
+                  <li class="nav-item mx-0 mx-lg-1">
+                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/join">join</a>
+                  </li>
+                  <li class="nav-item mx-0 mx-lg-1">
+                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/login">login</a>
+                  </li>
+                  <li class="nav-item mx-0 mx-lg-1">
+                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/sign_up">sign up</a>
+                  </li>
+                  <li class="nav-item mx-0 mx-lg-1">
+                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user_panel">user panel</a>
+                  </li>
+                  <li class="nav-item mx-0 mx-lg-1">
+                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/terms_and_conditions">terms & conditions</a>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </nav>
+
+    <div class="container">
+      <div class="row main">
+      
+      <div class="col-4">
+      <div class="main-login main-center">
+      <form action="{{ url_for('user_panel') }}" class="" method="POST">
+
+		<table class="table">
+  			<thead class="thead-dark">
+  			  <tr>
+    			 <th>#</th>
+     			 <th>Channel</th>
+				 <th>Name</th>
+				 <th></th>
+
+
+  			  </tr>
+  			</thead>
+  			<tbody>
+			{% for channel in channels %}
+    		  <tr>
+     			 <th scope="row"></th>
+     			 <td>{{channel.Channel_Name}}</td>
+				 
+				 <td><form id="delete" action="{{ url_for('delete_channel',channel_id=channel.id) }}" method = "post"><input class="delete" form="delete" Value="Delete" name="delete" type="submit"></form></td>
+				<td><form id="enter" action="{{ url_for('enter_channel',channel_id=channel.id) }}" method = "post"><input class="enter" form="enter" Value="Enter" name="enter" type="submit"></form></td>
+				 
+    		  </tr>
+             {% endfor %}
+
+  			</tbody>
+		</table>
+      </form>
+      </div>
+      </div>
+            
+      <div class="col-6">
+        <div class="main-login main-center">
+          <form action="{{ url_for('user_panel') }}" class="add" method="POST">
+            <div class="form-group">
+              <label class="cols-sm-2 control-label" for="Nickname">Nickname</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i aria-hidden="true" class="fa fa-user-secret fa-lg"></i></span> <input class="form-control" id="Nickname" name="Nickname" placeholder="Enter your nickname." type="text">
+                </div>
+              </div>
+              {{ NickName_failure }}
+            </div>
+            <div class="form-group">
+              <label class="cols-sm-2 control-label" for="Channel_Name">Channel Name</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i aria-hidden="true" class="fa fa-user-plus fa"></i></span> <input class="form-control" id="Channel_Name" name="Channel_Name" placeholder="Enter channel name." type="text">
+                </div>
+              </div>
+              {{ ChannelName_failure }}
+            </div>
+            <div class="form-group">
+              <label class="cols-sm-2 control-label" for="Channel_Name">Channel Password</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i aria-hidden="true" class="fa fa-lock fa"></i></span> <input class="form-control" id="Channel_Password" name="Channel_Password" placeholder="Enter channel password." type="password">
+                </div>
+              </div>
+              {{ ChannelPassword_failure }}
+            </div>
+            <div class="form-group">
+              <label class="cols-sm-2 control-label" for="Start_Time">Start Time</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i aria-hidden="true" class="fa fa-user-plus fa"></i></span> <input class="form-control" id="Start_Time" name="Start_Time" placeholder="10:30" type="time">
+                </div>
+              </div>
+              {{ StartTime_failure }}
+            </div>
+            <div class="form-group">
+              <label class="cols-sm-2 control-label" for="End_Time">End Time</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i aria-hidden="true" class="fa fa-user-plus fa"></i></span> <input class="form-control" id="End_Time" name="End_Time" placeholder="12:30" type="time">
+                </div>
+              </div>
+              {{ EndTime_failure }}
+            </div>
+            <div class="form-group">
+              <label class="cols-sm-2 control-label" for="Monday">Monday</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i aria-hidden="true" class="fa fa-user-plus fa"></i></span> <input class="form-control" id="Monday" name="days" value="Monday" type="checkbox">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="cols-sm-2 control-label" for="Tuesday">Tuesday</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i aria-hidden="true" class="fa fa-user-plus fa"></i></span> <input class="form-control" id="Tuesday" name="days" value="Tuesday" type="checkbox">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="cols-sm-2 control-label" for="Wednesday">Wednesday</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i aria-hidden="true" class="fa fa-user-plus fa"></i></span> <input class="form-control" id="Wednesday" name="days" value="Wednesday" type="checkbox">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="cols-sm-2 control-label" for="Thursday">Thursday</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i aria-hidden="true" class="fa fa-user-plus fa"></i></span> <input class="form-control" id="Thursday" name="days" value="Thursday" type="checkbox">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="cols-sm-2 control-label" for="Friday">Friday</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i aria-hidden="true" class="fa fa-user-plus fa"></i></span> <input class="form-control" id="Friday" name="days" value="Friday" type="checkbox">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="cols-sm-2 control-label" for="Saturday">Saturday</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i aria-hidden="true" class="fa fa-user-plus fa"></i></span> <input class="form-control" id="Saturday" name="days" value="Saturday" type="checkbox">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="cols-sm-2 control-label" for="Sunday">Sunday</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i aria-hidden="true" class="fa fa-user-plus fa"></i></span> <input class="form-control" id="Sunday" name="days" value="Sunday" type="checkbox">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <button class="btn btn-primary btn-lg btn-block login-button" id="button" type="submit">Create Channel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      </div>
+    </div>
+  </body>
+</html>

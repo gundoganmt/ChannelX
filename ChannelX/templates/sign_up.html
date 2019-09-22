@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+
+	  <meta charset="utf-8">
+      <meta name="description" content="ChannelX anonymous chat application.">
+      <meta name="author" content="ITU Software Engineering Course Group 3">
+      <title>ChannelX</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+      <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+      <link href="/static/css/freelancer.min.css" rel="stylesheet">
+
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet">
+      <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+      <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+      <link href="/static/css/style.css" rel='stylesheet' type='text/css'>
+      <link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicon.png">
+      <title>Sign Up</title>
+   </head>
+   <body id="page-top">
+      <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+         <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="/">ChannelX</a>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+               <ul class="navbar-nav ml-auto">
+                  <li class="nav-item mx-0 mx-lg-1">
+                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/join">join</a>
+                  </li>
+                  <li class="nav-item mx-0 mx-lg-1">
+                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/login">login</a>
+                  </li>
+                  <li class="nav-item mx-0 mx-lg-1">
+                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/sign_up">sign up</a>
+                  </li>
+                  <li class="nav-item mx-0 mx-lg-1">
+                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user_panel">user panel</a>
+                  </li>
+                  <li class="nav-item mx-0 mx-lg-1">
+                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/terms_and_conditions">terms & conditions</a>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </nav>
+      <div class="container">
+         <div class="row main">
+            <div class="main-login main-center">
+               <h5>Sign up to create a channel.</h5>
+               <form action="{{ url_for('sign_up') }}" class="" method="post">
+                  <div class="form-group">
+                     <label class="cols-sm-2 control-label" for="name">Your Name</label>
+                     <div class="cols-sm-10">
+                        <div class="input-group">
+                           <span class="input-group-addon"><i aria-hidden="true" class="fa fa-user fa"></i></span> <input class="form-control" id="Name" name="Name" placeholder="Enter your name." type="text">
+                        </div>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="cols-sm-2 control-label" for="email">Your Email</label>
+                     <div class="cols-sm-10">
+                        <div class="input-group">
+                           <span class="input-group-addon"><i aria-hidden="true" class="fa fa-envelope fa"></i></span> <input class="form-control" id="Email" name="Email" placeholder="Enter your email." type="email">
+                        </div>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="cols-sm-2 control-label" for="username">Username</label>
+                     <div class="cols-sm-10">
+                        <div class="input-group">
+                           <span class="input-group-addon"><i aria-hidden="true" class="fa fa-universal-access fa"></i></span> <input class="form-control" id="Username" name="Username" placeholder="Enter your username." type="text">
+                        </div>
+                     </div>
+                     {{ username_failure }}
+                  </div>
+                  <div class="form-group">
+                     <label class="cols-sm-2 control-label" for="password">Password</label>
+                     <div class="cols-sm-10">
+                        <div class="input-group">
+                           <span class="input-group-addon"><i aria-hidden="true" class="fa fa-lock fa-lg"></i></span> <input class="form-control" id="Password" name="Password" placeholder="Enter your password." type="password">
+                        </div>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="cols-sm-2 control-label" for="confirm">Confirm Password</label>
+                     <div class="cols-sm-10">
+                        <div class="input-group">
+                           <span class="input-group-addon"><i aria-hidden="true" class="fa fa-lock fa-lg"></i></span> <input class="form-control" id="Confirm" name="Confirm" placeholder="Confirm your password." type="password">
+                        </div>
+                     </div>
+                     {{ password_match }}
+                  </div>
+                  <div class="form-group">
+                     <button class="btn btn-primary btn-lg btn-block login-button" id="button" type="submit">Sign Up</button>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>
